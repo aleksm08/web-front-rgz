@@ -1,0 +1,173 @@
+body {
+    background-color: lightblue;
+    color: MediumVioletRed;
+    font-family: Arial;
+    margin: 0px;
+}
+header {
+    background-color: white;
+    color: green;
+    font-family: Arial;
+    margin: 0px;
+    padding: 10px;
+    font-size: 20pt;
+}
+main {
+    color: MediumVioletRed;
+    font-family: Arial;
+    margin: 10px 20px 60px;
+    font-size: 16pt;
+}
+footer {
+    background-color: #66a74f;
+    color: #fff;
+    font-family: Arial;
+    margin: 0px;
+    padding: 10px;
+    font-size: 20pt;
+    text-align: right;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+/* a {
+    color: blue;
+    text-decoration: none;
+}
+a:link {
+    color: blue;
+    text-decoration: none;
+    transition: 1s 2s;
+}
+a:visited {
+    color: green;
+    text-decoration: overline;
+    font-style: italic;
+}
+a:hover {
+    color: red;
+    background-color: blanchedalmond;
+    box-shadow: gray;
+    text-decoration: underline;
+    transition: 0.3s;
+}
+a:active {
+    color: black;
+    opacity: 0.3;
+} */
+div.menu {
+    border: 12px solid #00880080;
+    border-radius: 20px;
+    border-top-right-radius: 90px;
+    border-bottom-left-radius: 80px;
+    width: 345px;
+    margin: 0 auto;
+    color: black;
+    background-color: burlywood;
+    box-shadow: #00880080;
+    font-size: 18pt;
+}
+div.menu:hover {
+    background-color: gold;
+    box-shadow: 0 0 15 px #00000030;
+}
+h1.zagolovok_menu {
+    color:brown;
+    font-style: bold;
+    text-align: center;
+}
+h1 {
+    text-align: center;
+    font-style: bold;
+    color: brown;
+}
+
+/* 1. О Компании стили */
+/* Иконка меню */
+.nav-toggle-mobile {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 100;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+.icon-bar {
+    display: block;
+    width: 35px;
+    height: 2.6px;
+    margin: 4px 0;
+    background-color: #333;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.nav-panel {
+    position: fixed;
+    top: 0;
+    right: -200px;
+    width: 200px;
+    height: 33%;
+    background-color: #f8f8f8;
+    transition: right 0.3s ease-in-out;
+    z-index: 99;
+    padding-top: 50px;
+    box-sizing: border-box;
+}
+
+.nav-panel.open {
+    right: 0;
+}
+
+.nav-panel ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.nav-panel ul li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.nav-panel ul li:hover {
+    background-color: #ddd;
+    transform: scale(1.03);
+}
+
+.nav-panel ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.nav-panel ul li a.active {
+    color: #007BFF;
+}
+.nav-toggle-mobile:hover {
+    transform: scale(1.02);
+    background-color: #f8f8f8;
+    box-shadow: 3px 3px 2px #e2b1b130;
+    border: 2px solid #29272730;
+}
+.nav-toggle-mobile.open .icon-bar {
+    background-color: transparent;
+}
+
+.nav-toggle-mobile.open .icon-bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+    background-color: black;
+}
+
+.nav-toggle-mobile.open .icon-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle-mobile.open .icon-bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+    background-color: black;
+}
+/*  */
