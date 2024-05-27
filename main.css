@@ -1,35 +1,40 @@
 body {
-    background-color: lightblue;
-    color: MediumVioletRed;
+    background-color: white;
+    color: black;
     font-family: Arial;
     margin: 0px;
+    padding-top: 60px;
 }
 header {
-    background-color: white;
-    color: green;
+    background-color: #f8f8f8;
+    color: black;
     font-family: Arial;
-    margin: 0px;
     padding: 10px;
     font-size: 20pt;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 main {
-    color: MediumVioletRed;
+    color: black;
     font-family: Arial;
-    margin: 10px 20px 60px;
     font-size: 16pt;
+    margin-top: 60px;
 }
 footer {
-    background-color: #66a74f;
+    background-color: #15260f;
     color: #fff;
     font-family: Arial;
-    margin: 0px;
+    margin-top: 60px;
     padding: 10px;
     font-size: 20pt;
-    text-align: right;
-    position: fixed;
+    position: relative;
+    text-align: justify;
     bottom: 0;
     right: 0;
     left: 0;
+    position: static;
 }
 /* a {
     color: blue;
@@ -56,32 +61,6 @@ a:active {
     color: black;
     opacity: 0.3;
 } */
-div.menu {
-    border: 12px solid #00880080;
-    border-radius: 20px;
-    border-top-right-radius: 90px;
-    border-bottom-left-radius: 80px;
-    width: 345px;
-    margin: 0 auto;
-    color: black;
-    background-color: burlywood;
-    box-shadow: #00880080;
-    font-size: 18pt;
-}
-div.menu:hover {
-    background-color: gold;
-    box-shadow: 0 0 15 px #00000030;
-}
-h1.zagolovok_menu {
-    color:brown;
-    font-style: bold;
-    text-align: center;
-}
-h1 {
-    text-align: center;
-    font-style: bold;
-    color: brown;
-}
 
 /* 1. О Компании стили */
 /* Иконка меню */
@@ -89,7 +68,7 @@ h1 {
     position: fixed;
     top: 10px;
     right: 10px;
-    z-index: 100;
+    z-index: 101;
     cursor: pointer;
     background: none;
     border: none;
@@ -114,7 +93,7 @@ h1 {
     height: 33%;
     background-color: #f8f8f8;
     transition: right 0.3s ease-in-out;
-    z-index: 99;
+    z-index: 100;
     padding-top: 50px;
     box-sizing: border-box;
 }
@@ -169,5 +148,8 @@ h1 {
 .nav-toggle-mobile.open .icon-bar:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
     background-color: black;
+}
+.nav-panel.open ul li a:hover {
+    text-decoration: underline;
 }
 /*  */

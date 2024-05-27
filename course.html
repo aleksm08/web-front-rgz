@@ -7,26 +7,82 @@
         <title>Инвестиционная компани ПАО «ИК РУСС-ИНВЕСТ</title>
         <link rel="stylesheet" href="main.css">
 
-        <script>
-
-        </script>
-
         <style>
+            footer {
+                position: absolute;
+            }
+            .currency-calculator {
+                max-width: 430px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #f9f9f9;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
 
+            .currency-calculator h2 {
+                text-align: center;
+                color: #333;
+            }
+
+            .currency-calculator label {
+                display: block;
+                margin-bottom: 10px;
+                color: #666;
+            }
+
+            .currency-calculator input[type="number"] {
+                width: 95%;
+                padding: 10px;
+                margin-bottom: 20px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+
+            .currency-calculator button {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .currency-calculator button:hover {
+                background-color: #0056b3;
+            }
+
+            .currency-calculator .result {
+                margin-top: 20px;
+                text-align: center;
+                color: #333;
+            }
+            #exchange-rate {
+                margin-bottom: 20px;
+                padding: 10px;
+                background-color: #e9ecef;
+                border: 1px solid #ced4da;
+                border-radius: 4px;
+                font-size: 16px;
+                color: #495057;
+            }
         </style>
     </head>
 
     <body>
         <header>
             Мартынов
+        </header>
+
+        <div class="nav-panel">
             <button class="nav-toggle-mobile">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-        </header>
-
-        <div class="nav-panel">
             <ul>
                 <li><a href="company.html">О компании</a></li>
                 <li><a href="news.html">Новости</a></li>
@@ -37,12 +93,66 @@
         </div>
 
         <main>
-
+            <div class="currency-calculator">
+                <h2>Калькулятор валют</h2>
+                <div id="exchange-rate"></div>
+                <label for="rubles">Введите сумму в рублях:</label>
+                <input type="number" id="rubles" min="0" placeholder="Сумма в рублях">
+                <label for="thb">Введите сумму в тайландских батах:</label>
+                <input type="number" id="thb" min="0" placeholder="Сумма в тайландских батах">
+                <button onclick="calculateCurrency()">Перевести</button>
+                <div class="result" id="result"></div>
+            </div>
         </main>
     
         <footer>
             
         </footer>
+        
+        <script>
+            // Функция для получения актуального курса валюты
+            function getExchangeRate() {
+                return fetch('https://www.cbr-xml-daily.ru/daily_json.js')
+                    .then(response => response.json())
+                    .then(data => data.Valute.THB.Value)
+                    .catch(error => console.error('Ошибка при получении курса валют:', error));
+            }
+
+            // Функция для расчета и отображения результата
+            async function calculateCurrency() {
+                const rublesInput = document.getElementById('rubles');
+                const thbInput = document.getElementById('thb');
+                const resultDiv = document.getElementById('result');
+    
+                const exchangeRate = await getExchangeRate();
+                if (rublesInput.value && thbInput.value) {
+                    resultDiv.textContent = 'Введите значения одной валюты для расчётов';
+                } else if (rublesInput.value < 0 || thbInput.value < 0) {
+                    resultDiv.textContent = 'Сумма валюты не может быть отрицательной!';
+                } else if (rublesInput.value) {
+                    const thbValue = ((rublesInput.value / exchangeRate) * 10).toFixed(2);
+                    resultDiv.textContent = `${rublesInput.value} рублей = ${thbValue} тайландских батов`;
+                } else if (thbInput.value) {
+                    const rublesValue = ((thbInput.value * exchangeRate) / 10).toFixed(2);
+                    resultDiv.textContent = `${thbInput.value} тайландских батов = ${rublesValue} рублей`;
+                } else {
+                    resultDiv.textContent = 'Введите количество рублей или тайландских батов';
+                }
+            }
+
+            // Функция для отображения актуального курса валюты
+            async function displayExchangeRate() {
+                const exchangeRate = await getExchangeRate();
+                const exchangeRateElement = document.getElementById('exchange-rate');
+                
+                // Делим на 10, чтобы получить курс 1 единицы валюты
+                const unitExchangeRate = (exchangeRate / 10).toFixed(2);
+                exchangeRateElement.textContent = `Текущий курс: 1 тайландский бат = ${unitExchangeRate} рублей`;
+            }
+
+            // Вызываем функцию для отображения курса валюты при загрузке страницы
+            window.onload = displayExchangeRate;
+        </script>
         <script src="rgz.js"></script>
     </body>
 </html>
